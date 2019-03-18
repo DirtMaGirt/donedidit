@@ -1,3 +1,16 @@
 #clear-all-todos {
     color: red;
 }
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#container {
+    border: 2px black solid;
+    width: 800px;
+    height: 800px;
+}

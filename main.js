@@ -16,36 +16,47 @@ window.onload = init;
 // Set up all event listeners.
 function init() {
     // When they click the add todo button, run `addTodo`.
+    document.querySelector('#add-todo')
+        .addEventListener('click', addTodo)
+        // When they click the clear done todos button, run `clearDoneTodos`.
 
-        
-    // When they click the clear done todos button, run `clearDoneTodos`.
-
-    
-    // When they click the clear all todos button, run `clearAllTodos`.
+    document.querySelectorAll('li')
+        .addEventListener('click', completeIt)
+        // When they click the clear all todos button, run `clearAllTodos`.
 
 }
 
 function addTodo(event) {
     // Stop page from reloading on button click.
-
+    event.preventDefault();
 
     // Get new todo from the new todo input field.
-
-
-    // Clear the input field of all text.
-
-
+    event.preventDefault();
+    const listItem = document.querySelector('#new-todo').value;
+    todos.push(listItem)
+        // Clear the input field of all text.
+    document.querySelector('#new-todo').value = '';
     // Put the todo and its "done-ness" in their respective arrays.
+    function completeIt(event) {
+        event.preventDefault();
 
+
+    }
+    // For every item in the list, add it to the given ol.
+
+    const newOl = document.querySelector('#todo-list')
 
     // Create a new html element and put our new todo's text in there.
-
-    
+    const newLi = document.createElement('li');
+    newLi.innerText = listItem;
     // Add an event listener on the newly created html element to launch
     // `toggleDone` when it's clicked.
 
 
     // Put our new element on the list part of our page!
+    newOl.appendChild(newLi);
+
+
 
 }
 
@@ -53,10 +64,10 @@ function addTodo(event) {
 function clearAllTodos(event) {
     // Stop page from reloading on button click.
 
-    
+
     // Remove all todos from BOTH arrays.
 
-    
+
     // Remove all todos from the html.
     // You'll have to write that function too, but we'll call it here:
     removeAllChildrenOfOl();
@@ -97,7 +108,7 @@ function clearDoneTodos(event) {
 function toggleDone(event) {
     // No need to run `event.preventDefault` here; that default behavior only
     // applies to buttons.
-    
+
     // Grab the HTML element that was clicked.
     // If you don't know, the event parameter has what you need... somewhere.
 
@@ -124,4 +135,11 @@ function removeAllChildrenOfOl() {
     // Look at the methods `.hasChildNodes` and `removeChild`.
     // There are other ways too, though. Feel free to poke around.
 
+}
+
+function resetAllInputs() {
+    const inputs = document.querySelectorAll('Input');
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = '';
+    }
 }

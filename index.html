@@ -12,19 +12,27 @@
 
 <body>
     <section id="container">
-        <form id="todo-form">
-            <input id="new-todo">
-            <button id="add-todo">Add New Todo</button>
-        </form>
+        <div>
 
-        <ol id="todo-list"></ol>
+            <form id="todo-form">
+                <input id="new-todo">
+                <button id="add-todo">Add New Todo</button>
+                <div>
+                    <form id="clear-todos-form">
+                        <button id="clear-done-todos">Clear all completed todos.</button>
+                        <section id="clear-all-todos-container">
+                            <button id="clear-all-todos">Clear ALL todos.</button>
+                        </section>
+                    </form>
+                </div>
+            </form>
 
-        <form id="clear-todos-form">
-            <button id="clear-done-todos">Clear all completed todos.</button>
-            <section id="clear-all-todos-container">
-                <button id="clear-all-todos">Clear ALL todos.</button>
-            </section>
-        </form>
+        </div>
+
+
+        <div>
+            <ol id="todo-list"></ol>
+        </div>
     </section>
 </body>
 

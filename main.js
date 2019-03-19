@@ -20,9 +20,8 @@ function init() {
         .addEventListener('click', addTodo)
         // When they click the clear done todos button, run `clearDoneTodos`.
 
-    document.querySelectorAll('li')
-        .addEventListener('click', completeIt)
-        // When they click the clear all todos button, run `clearAllTodos`.
+
+    // When they click the clear all todos button, run `clearAllTodos`.
 
 }
 
@@ -31,42 +30,37 @@ function addTodo(event) {
     event.preventDefault();
 
     // Get new todo from the new todo input field.
-    event.preventDefault();
     const listItem = document.querySelector('#new-todo').value;
-    todos.push(listItem)
-        // Clear the input field of all text.
+
+    // Clear the input field of all text.
     document.querySelector('#new-todo').value = '';
     // Put the todo and its "done-ness" in their respective arrays.
-    function completeIt(event) {
-        event.preventDefault();
-
-
-    }
-    // For every item in the list, add it to the given ol.
-
-    const newOl = document.querySelector('#todo-list')
+    todos.push(listItem)
+    isDone.push(listItem)
+    console.log(isDone)
 
     // Create a new html element and put our new todo's text in there.
-    const newLi = document.createElement('li');
-    newLi.innerText = listItem;
+    const newlI = document.createElement('li');
+    newlI.innerText = listItem;
     // Add an event listener on the newly created html element to launch
     // `toggleDone` when it's clicked.
-
+    document.querySelector('oL')
+        .addEventListener('click', toggleDone)
 
     // Put our new element on the list part of our page!
-    newOl.appendChild(newLi);
-
-
+    const oL = document.querySelector('#todo-list')
+    oL.appendChild(newlI);
 
 }
 
 
 function clearAllTodos(event) {
     // Stop page from reloading on button click.
-
+    event.preventDefault();
 
     // Remove all todos from BOTH arrays.
-
+    todos = []
+    isdone = []
 
     // Remove all todos from the html.
     // You'll have to write that function too, but we'll call it here:

@@ -19,10 +19,12 @@ function init() {
     document.querySelector('#add-todo')
         .addEventListener('click', addTodo)
         // When they click the clear done todos button, run `clearDoneTodos`.
-
+    document.querySelector('#clear-done-todos')
+        .addEventListener('click', clearDoneTodos)
 
     // When they click the clear all todos button, run `clearAllTodos`.
-
+    document.querySelector('#clear-all-todos')
+        .addEventListener('click', clearAllTodos)
 }
 
 function addTodo(event) {
@@ -61,14 +63,16 @@ function clearAllTodos(event) {
     // Remove all todos from BOTH arrays.
     todos = []
     isdone = []
-
-    // Remove all todos from the html.
-    // You'll have to write that function too, but we'll call it here:
+    console.log(todos)
+    console.log(isdone)
+        // Remove all todos from the html.
+        // You'll have to write that function too, but we'll call it here:
     removeAllChildrenOfOl();
 }
 
 function clearDoneTodos(event) {
     // Stop page from reloading on button click.
+    event.preventDefault();
 
     /*
         Find which todos need to be removed and remove them from BOTH arrays.

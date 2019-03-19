@@ -46,8 +46,8 @@ function addTodo(event) {
     newlI.innerText = listItem;
     // Add an event listener on the newly created html element to launch
     // `toggleDone` when it's clicked.
-    document.querySelector('oL')
-        .addEventListener('click', toggleDone)
+    // document.querySelector('newlI')
+    //   .addEventListener('click', toggleDone)
 
     // Put our new element on the list part of our page!
     const oL = document.querySelector('#todo-list')
@@ -63,11 +63,13 @@ function clearAllTodos(event) {
     // Remove all todos from BOTH arrays.
     todos = []
     isdone = []
-    console.log(todos)
-    console.log(isdone)
         // Remove all todos from the html.
         // You'll have to write that function too, but we'll call it here:
-    removeAllChildrenOfOl();
+
+    let removal = document.querySelector('#todo-list')
+    removal.removeChild(removal.removeAllChildrenOfOl)
+
+
 }
 
 function clearDoneTodos(event) {

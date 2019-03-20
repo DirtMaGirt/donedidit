@@ -104,14 +104,24 @@ function clearDoneTodos(event) {
     //         }
     //     }
 
-
+    const removal = document.querySelector('#todo-list')
+    let cluster = []
     for (let i = 0; i < isDone.length; i++) {
         if (isDone[i] === true) {
+            finish = todos[i];
+            cluster.push(finish)
             isDone.splice(i, 1);
             todos.splice(i, 1);
             console.log(todos)
+            console.log(cluster)
+            removal.removeChild(i)
+
+
+
         }
     }
+
+    console.log(removal.childElementCount)
 
     /*
         Now remove the done todos from the html.
@@ -125,6 +135,7 @@ function clearDoneTodos(event) {
 
         Your call.
     */
+
 
 
 }

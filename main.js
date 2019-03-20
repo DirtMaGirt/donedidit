@@ -104,41 +104,54 @@ function clearDoneTodos(event) {
     //         }
     //     }
 
-    const removal = document.querySelector('#todo-list')
+    let parent = document.querySelector('#todo-list');
+    let children = document.getElementsByClassName('complete');
     let cluster = []
-    for (let i = 0; i < isDone.length; i++) {
-        if (isDone[i] === true) {
-            finish = todos[i];
-            cluster.push(finish)
-            isDone.splice(i, 1);
-            todos.splice(i, 1);
-            console.log(todos)
-            console.log(cluster)
-            removal.removeChild(i)
 
-
-
-        }
+    while (isDone.includes(true)) {
+        const i = isDone.indexOf(true);
+        finish = todos[i];
+        cluster.push(finish)
+        todos.splice(i, 1);
+        isDone.splice(i, 1);
+        children[0].remove();
     }
+    // for (let i = 0; i < isDone.length; i++) {
+    //     if (isDone[i] === true) {
+    //         finish = todos[i];
+    //         // parent.removeChild(child);
+    //         cluster.push(finish)
+    //         isDone.splice(i, 1);
+    //         todos.splice(i, 1);
 
-    console.log(removal.childElementCount)
+    //     }
+    // }
 
-    /*
-        Now remove the done todos from the html.
 
-        Although it's not technically efficient as there is a slight time cost
-        to rendering new elements on a web page, you might think not of removing
-        certain todos but making a new set of lis to replace what we have. You
-        may even already have some code to clear the whole list!
 
-        You could do it the harder but more html efficient way instead, though.
 
-        Your call.
-    */
+
+
+
 
 
 
 }
+/*
+    Now remove the done todos from the html.
+
+    Although it's not technically efficient as there is a slight time cost
+    to rendering new elements on a web page, you might think not of removing
+    certain todos but making a new set of lis to replace what we have. You
+    may even already have some code to clear the whole list!
+
+    You could do it the harder but more html efficient way instead, though.
+
+    Your call.
+*/
+
+
+
 
 function outline(e) {
 
@@ -148,10 +161,13 @@ function outline(e) {
     if (isDone[index] === false) {
         isDone.splice(index, 1, true)
         e.currentTarget.style.background = 'lightgray';
+        e.currentTarget.className = "complete"
+
 
     } else {
         isDone.splice(index, 1, false)
         e.currentTarget.style.background = 'white';
+        e.currentTarget.className = ""
         console.log(isDone[index])
     }
 

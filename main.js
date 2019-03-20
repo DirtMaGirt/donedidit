@@ -26,7 +26,6 @@ function init() {
     document.querySelector('#clear-all-todos')
         .addEventListener('click', clearAllTodos)
 
-
 }
 
 function addTodo(event) {
@@ -40,16 +39,19 @@ function addTodo(event) {
     document.querySelector('#new-todo').value = '';
     // Put the todo and its "done-ness" in their respective arrays.
     todos.push(listItem)
-    isDone.push('False')
-    console.log(isDone)
-    console.log(todos)
+    isDone.push(false)
+
 
     // Create a new html element and put our new todo's text in there.
     const newLi = document.createElement('li');
     newLi.innerText = listItem;
 
+
+
     // Add an event listener on the newly created html element to launch
     // `toggleDone` when it's clicked.
+    document.querySelector('#todo-list')
+        .addEventListener('click', toggleDone)
 
     // Put our new element on the list part of our page!
     const oL = document.querySelector('#todo-list')
@@ -89,7 +91,27 @@ function clearDoneTodos(event) {
 
     */
 
+    //     const ItemCompleted = []
+    //  //   for (let i = 0; i < isDone.length; i++) {
+    //         let didIt = todos[i];
+    //         const completedItem = isDone[i].innertext;
+    //         if (isDone[i] === true) {
 
+    //             todos.splice(didIt, 1);
+    //             isDone.splice(didIt, 1);
+    //             console.log(todos)
+    //             console.log(isDone)
+    //         }
+    //     }
+
+
+    for (let i = 0; i < isDone.length; i++) {
+        if (isDone[i] === true) {
+            isDone.splice(i, 1);
+            todos.splice(i, 1);
+            console.log(todos)
+        }
+    }
 
     /*
         Now remove the done todos from the html.
@@ -107,15 +129,49 @@ function clearDoneTodos(event) {
 
 }
 
+function outline(e) {
+
+    let maybeItem = e.currentTarget.innerText;
+    let current = []
+    const index = todos.indexOf(maybeItem);
+    if (isDone[index] === false) {
+        isDone.splice(index, 1, true)
+        e.currentTarget.style.background = 'lightgray';
+
+    } else {
+        isDone.splice(index, 1, false)
+        e.currentTarget.style.background = 'white';
+        console.log(isDone[index])
+    }
+
+    // if (isDone.indexOf(todos.indexOf(e.currentTarget.innerText)) === true) {
+    //     e.currentTarget.style.background = 'lightgray';
+    //     console.log(todos.indexOf(e.currentTarget.innerText));
+    //     // When this function is used as an event handler: this === e.currentTarget
+    // }
+}
+
 function toggleDone(event) {
+    event.preventDefault();
+    // const clickedLi = event.currentTarget;
+    // clickedLi.style.background = 'lightgray';
+    // console.log(clickedLi.innerText);
+
     // No need to run `event.preventDefault` here; that default behavior only
     // applies to buttons.
 
     // Grab the HTML element that was clicked.
     // If you don't know, the event parameter has what you need... somewhere.
 
-    const toggledItem = document.getElementById("#todo-list");
-    toggleItem.getElementsByTagName("LI")[1].style.backgroundColor = "red";
+    let ps = document.getElementsByTagName('li');
+
+    for (let i = 0; i < ps.length; i++) {
+        ps[i].addEventListener('click', outline, true);
+    }
+
+
+
+
     // Find the index of the array that this todo resides in. There are a couple
     // ways to do this, and I'm sure you'll figure one out!
 
